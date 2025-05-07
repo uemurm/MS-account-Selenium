@@ -1,6 +1,6 @@
-'''
+"""
 Main file.
-'''
+"""
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium import webdriver
@@ -12,10 +12,10 @@ from search_words import search_words
 LOGIN_URL = 'https://login.live.com/'
 REWARD_URL = 'https://rewards.bing.com/'
 
-EMAILFIELD = (By.ID, "i0116")
-PASSWORD_FIELD = (By.ID, "i0118")
-NEXT_BUTTON = (By.ID, "idSIButton9")
-DECLINE_BUTTON = (By.ID, "declineButton")
+EMAIL_FIELD = (By.CSS_SELECTOR, 'input[aria-label="Enter your email, phone, or Skype."]')
+PASSWORD_FIELD = (By.ID, 'passwordEntry')
+NEXT_BUTTON = (By.CSS_SELECTOR, 'button[type="submit"]')
+DECLINE_BUTTON = (By.CSS_SELECTOR, 'data-testid="secondaryButton"')
 
 # Edge is used with my own profile so let's use Chrome here.
 browser = webdriver.Chrome()
@@ -23,7 +23,7 @@ browser.maximize_window()
 browser.get(LOGIN_URL)
 
 # wait for email field and enter email
-WebDriverWait(browser, 10).until(EC.element_to_be_clickable(EMAILFIELD)).send_keys(USER_NAME)
+WebDriverWait(browser, 10).until(EC.element_to_be_clickable(EMAIL_FIELD)).send_keys(USER_NAME)
 
 # Click Next
 WebDriverWait(browser, 10).until(EC.element_to_be_clickable(NEXT_BUTTON)).click()
@@ -45,9 +45,11 @@ FIRST_NAME = (By.ID, "id_n")
 browser.get(BING_URL)
 WebDriverWait(browser, 10).until(EC.element_to_be_clickable(FIRST_NAME))
 
+search_words = ['MLB ' + str(i) for i in range(1990, 2020)]
 for word in search_words:
     WebDriverWait(browser, 10).until(EC.element_to_be_clickable(SEARCH_BOX)).send_keys(word + "\n")
     WebDriverWait(browser, 10).until(EC.element_to_be_clickable(SEARCH_BOX)).clear()
+    browser.implicitly_wait(10)
 
-while True:
-    pass
+# while True:
+#     pass
