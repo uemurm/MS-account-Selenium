@@ -1,30 +1,30 @@
-'''
+"""
 Module to define search words.
-'''
+"""
 search_words = {
     'Beef',
     'Burger'
-    # 'Nelson',
-    # 'Journey',
-    # 'Japan',
-    # 'Australia',
+    'Nelson',
+    'Journey',
+    'Japan',
+    'Australia',
 
-    # 'baseball',
-    # 'football',
-    # 'soccer',
-    # 'tennis',
+    'baseball',
+    'football',
+    'soccer',
+    'tennis',
 
-    # 'Chopin',
-    # 'Bach',
-    # 'Beethoven',
+    'Chopin',
+    'Bach',
+    'Beethoven',
 
-    # 'イー',
-    # 'リャン',
-    # 'サン',
-    # 'スー',
-    # 'ウー',
-    # 'ロー',
-    # 'チー',
-    # 'パー',
-    # 'キュー',
+    'イー',
+    'リャン',
+    'サン',
+    'スー',
+    'ウー',
+    'ロー',
+    'チー',
+    'パー',
+    'キュー',
 }

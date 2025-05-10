@@ -10,8 +10,9 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 
 from credentials import USER_NAME, PASSWORD
+# from search_words import search_words
 
-SEARCH_INTERVAL_RANGE = (5, 10)
+SEARCH_INTERVAL_RANGE = (5, 20)
 
 LOGIN_URL = 'https://login.live.com/'
 REWARD_URL = 'https://rewards.bing.com/'
@@ -38,7 +39,8 @@ wait.until(EC.element_to_be_clickable(PASSWORD_FIELD)).send_keys(PASSWORD)
 wait.until(EC.element_to_be_clickable(NEXT_BUTTON)).click()
 
 # Stay signed in?
-wait.until(EC.element_to_be_clickable(DECLINE_BUTTON)).click()
+# Wait for 5-min to input a code from MS authenticator.
+WebDriverWait(browser, 5 * 60).until(EC.element_to_be_clickable(DECLINE_BUTTON)).click()
 
 #
 # Bing page
